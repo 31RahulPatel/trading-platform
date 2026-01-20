@@ -44,7 +44,7 @@ trading-platform/
 ### Step 2: Clone and Initialize
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/trading-platform.git
+git clone https://github.com/31RahulPatel/trading-platform.git
 cd trading-platform
 
 # Initialize with existing structure
