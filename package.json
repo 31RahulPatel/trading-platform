@@ -1,0 +1,32 @@
+{
+  "name": "trading-platform",
+  "version": "1.0.0",
+  "description": "Microservices-based trading platform",
+  "private": true,
+  "workspaces": [
+    "services/*",
+    "shared/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=services/auth-service\" \"npm run dev --workspace=services/order-service\" \"npm run dev --workspace=services/portfolio-service\" \"npm run dev --workspace=services/admin-service\"",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "k8s:deploy": "kubectl apply -f infrastructure/k8s/base/",
+    "terraform:init": "cd infrastructure/terraform && terraform init",
+    "terraform:plan": "cd infrastructure/terraform && terraform plan",
+    "terraform:apply": "cd infrastructure/terraform && terraform apply"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
